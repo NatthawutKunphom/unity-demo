@@ -53,7 +53,7 @@ public class GamePlay : MonoBehaviour
                 
 
                 Debug.Log(sum);
-                txtDisplay.text =" "+sum;
+                txtDisplay.text ="Point: "+sum;
 
                 if (sum == 120)
                 {
