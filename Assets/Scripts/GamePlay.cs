@@ -11,11 +11,21 @@ public class GamePlay : MonoBehaviour
     int BuleSphere = 10;
     int GreenSphere = 20;
     int sum = 0;
-    public TextMeshProUGUI txtDisplay;
+    public TextMeshProUGUI txtDisplay, txtDisplay2, txtDisplay3;
+    public float timeRemaining = 20;
 
     // Update is called once per frame
     void Update () 
     {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            txtDisplay3.text = "TIME " + timeRemaining.ToString("0");
+        }
+        else if (sum <= 0)
+        {
+            txtDisplay2.text = "Mission Failed";
+        }
        
         if (Input.GetMouseButtonDown (0)) 
         {
@@ -44,6 +54,17 @@ public class GamePlay : MonoBehaviour
 
                 Debug.Log(sum);
                 txtDisplay.text =" "+sum;
+
+                if (sum == 120)
+                {
+                    txtDisplay2.text = "Mission Completed";
+                    timeRemaining = 0;
+                }
+                else if (sum <= 0)
+                {
+                    txtDisplay2.text = "Mission Failed";
+                    timeRemaining = 0;
+                }
 
             }
 
